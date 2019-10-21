@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using JCSoft.ApiCore.Interfaces;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
 
@@ -8,7 +9,7 @@ namespace JCSoft.ApiCore
     /// Api 请求的基类
     /// </summary>
     public abstract class ApiRequestBase<TResponse>
-        where TResponse : ApiResponseBase
+        where TResponse : ApiResponseBase, IRequestBase
     {
         /// <summary>
         /// Http 方法
