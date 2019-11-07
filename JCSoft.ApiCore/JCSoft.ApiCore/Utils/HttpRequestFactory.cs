@@ -20,7 +20,7 @@ namespace JCSoft.ApiCore.Utils
         }
 
         public static async Task<HttpResponseMessage> Post(
-           string requestUri, object value, Dictionary<string, string> header = null, bool isJson = true)
+           string requestUri, string value, Dictionary<string, string> header = null, bool isJson = true)
         {
             var builder = new HttpRequestBuilder()
                                 .AddMethod(HttpMethod.Post)
@@ -34,11 +34,12 @@ namespace JCSoft.ApiCore.Utils
         }
 
         public static async Task<HttpResponseMessage> Put(
-           string requestUri, object value, Dictionary<string, string> header = null)
+           string requestUri, string value, Dictionary<string, string> header = null, bool isJson = true)
         {
             var builder = new HttpRequestBuilder()
                                 .AddMethod(HttpMethod.Put)
                                 .AddRequestUri(requestUri)
+                                .IsJson(isJson)
                                 .AddContent(new JsonContent(value))
                                 .AddHeader(header);
 
@@ -46,10 +47,12 @@ namespace JCSoft.ApiCore.Utils
         }
 
 
-        public static async Task<HttpResponseMessage> Delete(string requestUri)
+        public static async Task<HttpResponseMessage> Delete(string requestUri, Dictionary<string, string> header = null, bool isJson = true)
         {
             var builder = new HttpRequestBuilder()
                                 .AddMethod(HttpMethod.Delete)
+                                .AddHeader(header)
+                                .IsJson(isJson)
                                 .AddRequestUri(requestUri);
 
             return await builder.SendAsync();

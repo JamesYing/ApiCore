@@ -48,10 +48,9 @@ namespace JCSoft.ApiCore.Utils
             return this;
         }
 
-        public HttpRequestBuilder AddContentObject(object obj)
+        public HttpRequestBuilder AddContentObject(string obj)
         {
-            this.content = _isJson ?
-                new JsonContent(obj) : new StringContent(obj.ToString());
+            this.content = new StringContent(obj);
 
             return this;
         }

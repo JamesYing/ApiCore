@@ -9,7 +9,7 @@ namespace JCSoft.ApiCore
     /// Api 请求的基类
     /// </summary>
     public abstract class ApiRequestBase<TResponse>
-        where TResponse : ApiResponseBase, IRequestBase
+        where TResponse : ApiResponseBase
     {
         /// <summary>
         /// Http 方法
